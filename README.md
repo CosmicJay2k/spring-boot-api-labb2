@@ -1,1 +1,1 @@
-# spring-boot-api-labb2
+# Laboration Rest API in Spring Boot with MySQL database.
