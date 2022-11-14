@@ -1,9 +1,11 @@
 package com.example.labb2;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 
@@ -11,21 +13,21 @@ import jakarta.persistence.OneToMany;
 public class Person {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String firstName;
     private String lastName;
-    @OneToMany
-    private List<Car> carList;
+    @OneToMany(mappedBy = "owner")
+    private List<Car> cars = new ArrayList<>();
 
     // Constructors
     protected Person() {
     }
 
-    public Person(String firstName, String lastName, List<Car> carList) {
+    public Person(String firstName, String lastName) {
         this.firstName = firstName;
         this.lastName = lastName;
-        this.carList = carList;
+
     }
 
     // Getters and setters
@@ -53,12 +55,9 @@ public class Person {
         this.lastName = lastName;
     }
 
-    public List<Car> getCarList() {
-        return carList;
-    }
-
-    public void setCarList(List<Car> carList) {
-        this.carList = carList;
+    public void addCar(Car car) {
+        car.setOwner(this);
+        this.cars.add(car);
     }
 
 }

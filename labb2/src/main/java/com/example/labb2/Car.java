@@ -2,23 +2,28 @@ package com.example.labb2;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
 
 @Entity
 public class Car {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String make;
     private String model;
+    @ManyToOne
+    private Person owner;
 
     protected Car() {
     }
 
-    public Car(String make, String model) {
+    public Car(String make, String model, Person owner) {
         this.make = make;
         this.model = model;
+        this.owner = owner;
     }
 
     public Long getId() {
@@ -45,4 +50,11 @@ public class Car {
         this.model = model;
     }
 
+    public Person getOwner() {
+        return owner;
+    }
+
+    public void setOwner(Person owner) {
+        this.owner = owner;
+    }
 }

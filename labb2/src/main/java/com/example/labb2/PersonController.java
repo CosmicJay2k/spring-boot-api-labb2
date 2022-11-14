@@ -5,15 +5,15 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class Labb2Controller {
+public class PersonController {
 
     PersonRepository personRepository;
 
-    public Labb2Controller(PersonRepository personRepository) {
+    public PersonController(PersonRepository personRepository) {
         this.personRepository = personRepository;
     }
 
-    @PostMapping("/persons")
+    @PostMapping("/person")
     public String addPerson(@RequestBody Person person) {
         personRepository.save(person);
         return "Person saved!";
