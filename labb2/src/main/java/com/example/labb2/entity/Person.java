@@ -1,4 +1,4 @@
-package com.example.labb2;
+package com.example.labb2.entity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,7 +27,6 @@ public class Person {
     public Person(String firstName, String lastName) {
         this.firstName = firstName;
         this.lastName = lastName;
-
     }
 
     // Getters and setters

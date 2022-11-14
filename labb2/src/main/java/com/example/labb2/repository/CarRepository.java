@@ -1,6 +1,8 @@
-package com.example.labb2;
+package com.example.labb2.repository;
 
 import org.springframework.data.repository.CrudRepository;
+
+import com.example.labb2.entity.Car;
 
 public interface CarRepository extends CrudRepository<Car, Long> {
 
