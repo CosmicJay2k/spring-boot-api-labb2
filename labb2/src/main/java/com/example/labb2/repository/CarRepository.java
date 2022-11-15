@@ -6,4 +6,6 @@ import com.example.labb2.entity.Car;
 
 public interface CarRepository extends CrudRepository<Car, Long> {
 
+    Car findById(long id);
+
 }
