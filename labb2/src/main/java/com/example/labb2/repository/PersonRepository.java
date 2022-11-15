@@ -6,5 +6,5 @@ import com.example.labb2.entity.Person;
 
 public interface PersonRepository extends CrudRepository<Person, Long> {
 
-    Person findByFirstName(String firstName);
+    Person findById(long id);
 }
