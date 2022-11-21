@@ -5,7 +5,7 @@
 ## /person
 
 <p>POST: String firstName, String lastName<br>
-GET: List all</p
+GET: List all</p>
 
 ## /person/{id}
 
