@@ -2,11 +2,14 @@ package com.example.labb2;
 
 import java.time.LocalDateTime;
 
+import static org.geolatte.geom.crs.CoordinateReferenceSystems.WGS84;
+import static org.geolatte.geom.builder.DSL.*;
+import org.geolatte.geom.G2D;
+import org.geolatte.geom.Point;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
-import org.springframework.data.geo.Point;
 
 import com.example.labb2.entity.Car;
 import com.example.labb2.entity.Parkingmeter;
@@ -32,7 +35,7 @@ public class Labb2Application {
 			person.save(p1);
 			var c1 = new Car("BMW", "Caar", p1);
 			car.save(c1);
-			Point point = new Point(1543.43, 1234.32);
+			Point<G2D> point = new Point<G2D>(point(WGS84, g(4.33, 3.21)));
 			var ps = new Parkingspot(point, 12.23);
 			parking.save(ps);
 			var pm = new Parkingmeter(p1, c1, ps, LocalDateTime.now(), false);

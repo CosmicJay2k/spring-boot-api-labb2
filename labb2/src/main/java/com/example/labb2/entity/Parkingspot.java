@@ -1,6 +1,7 @@
 package com.example.labb2.entity;
 
-import org.springframework.data.geo.Point;
+import org.geolatte.geom.G2D;
+import org.geolatte.geom.Point;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -13,13 +14,13 @@ public class Parkingspot {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private Point point;
+    private Point<G2D> point;
     private double price;
 
     public Parkingspot() {
     }
 
-    public Parkingspot(Point point, double price) {
+    public Parkingspot(Point<G2D> point, double price) {
         this.point = point;
         this.price = price;
     }
@@ -32,11 +33,11 @@ public class Parkingspot {
         this.id = id;
     }
 
-    public Point getPoint() {
+    public Point<G2D> getPoint() {
         return point;
     }
 
-    public void setPoint(Point point) {
+    public void setPoint(Point<G2D> point) {
         this.point = point;
     }
 
