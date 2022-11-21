@@ -5,6 +5,7 @@
 ## /person
 
 <p>POST: String firstName, String lastName<br>
+  
 GET: List all</p>
 
 ## /person/{id}
@@ -14,6 +15,7 @@ GET: Get person with id {id}
 ## /car
 
 <p>POST: String make, String model, Person owner<br>
+  
 GET: List all</p>
 
 ## /car/{id}
@@ -23,6 +25,7 @@ GET: Get car with id {id}
 ## /parkingspot
 
 <p>POST: Point<G2D> point, Double price<br>
+  
 GET: List all</p>
 
 ## /parkingspot/{id}
