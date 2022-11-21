@@ -1,8 +1,12 @@
 package com.example.labb2.repository;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
+import org.springframework.data.jpa.repository.Modifying;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.ListCrudRepository;
+import org.springframework.data.repository.query.Param;
 
 import com.example.labb2.entity.Parkingmeter;
 
@@ -15,5 +19,11 @@ public interface ParkingmeterRepository extends ListCrudRepository<Parkingmeter,
     List<Parkingmeter> findByClosedAndPerson_id(boolean closed, long id);
 
     List<Parkingmeter> findByClosedAndCar_id(boolean closed, long id);
+
+    @Query("""
+            UPDATE Parkingmeter SET end = :time WHERE id = :id
+            """)
+    @Modifying
+    void updateEnd(@Param("id") int id, LocalDateTime time);
 
 }

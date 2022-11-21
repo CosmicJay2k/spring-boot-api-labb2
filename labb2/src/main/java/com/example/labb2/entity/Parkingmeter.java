@@ -82,11 +82,11 @@ public class Parkingmeter {
         this.created = created;
     }
 
-    public LocalDateTime getended() {
+    public LocalDateTime getEnd() {
         return end;
     }
 
-    public void setended(LocalDateTime end) {
+    public void setEnd(LocalDateTime end) {
         this.end = end;
     }
 
