@@ -1,7 +1,5 @@
 package com.example.labb2;
 
-import java.time.LocalDateTime;
-
 import static org.geolatte.geom.crs.CoordinateReferenceSystems.WGS84;
 import static org.geolatte.geom.builder.DSL.*;
 import org.geolatte.geom.G2D;
@@ -45,9 +43,9 @@ public class Labb2Application {
 			Point<G2D> point2 = new Point<G2D>(point(WGS84, g(4.33, 3.21)));
 			var ps2 = new Parkingspot(point2, 12.23);
 			parking.save(ps2);
-			var pm = new Parkingmeter(p1, c2, ps, LocalDateTime.now(), false);
+			var pm = new Parkingmeter(p1, c2, ps);
 			meter.save(pm);
-			var pmClosed = new Parkingmeter(p2, c1, ps2, LocalDateTime.now(), true);
+			var pmClosed = new Parkingmeter(p2, c1, ps2);
 			meter.save(pmClosed);
 		};
 	}

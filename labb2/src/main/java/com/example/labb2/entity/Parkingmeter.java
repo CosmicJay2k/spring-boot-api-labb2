@@ -3,7 +3,6 @@ package com.example.labb2.entity;
 import java.time.LocalDateTime;
 
 import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.UpdateTimestamp;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -28,20 +27,19 @@ public class Parkingmeter {
     @CreationTimestamp
     @Column(nullable = false, updatable = false)
     private LocalDateTime created;
-    @UpdateTimestamp
-    private LocalDateTime ended;
+    private LocalDateTime end;
     private boolean closed;
 
     public Parkingmeter() {
     }
 
-    public Parkingmeter(Person person, Car car, Parkingspot parkingspot,
-            LocalDateTime created, boolean closed) {
+    public Parkingmeter(Person person, Car car, Parkingspot parkingspot) {
         this.person = person;
         this.car = car;
         this.parkingspot = parkingspot;
-        this.created = created;
-        this.closed = closed;
+        this.created = LocalDateTime.now();
+        this.end = this.created.plusHours(1);
+        this.closed = false;
     }
 
     public Long getId() {
@@ -85,11 +83,11 @@ public class Parkingmeter {
     }
 
     public LocalDateTime getended() {
-        return ended;
+        return end;
     }
 
-    public void setended(LocalDateTime ended) {
-        this.ended = ended;
+    public void setended(LocalDateTime end) {
+        this.end = end;
     }
 
     public boolean isClosed() {
