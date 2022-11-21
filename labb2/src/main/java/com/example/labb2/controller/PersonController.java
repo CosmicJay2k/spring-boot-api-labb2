@@ -33,6 +33,6 @@ public class PersonController {
 
     @GetMapping("/person")
     public List<Person> getAllPersons() {
-        return (List<Person>) personRepository.findAll();
+        return personRepository.findAll();
     }
 }

@@ -1,10 +1,10 @@
 package com.example.labb2.repository;
 
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.ListCrudRepository;
 
 import com.example.labb2.entity.Car;
 
-public interface CarRepository extends CrudRepository<Car, Long> {
+public interface CarRepository extends ListCrudRepository<Car, Long> {
 
     Car findById(long id);
 

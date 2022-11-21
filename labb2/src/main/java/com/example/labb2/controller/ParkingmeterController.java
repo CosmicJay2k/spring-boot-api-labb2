@@ -19,6 +19,6 @@ public class ParkingmeterController {
 
     @GetMapping("/parkingmeter")
     public List<Parkingmeter> getAllParkingmeters() {
-        return (List<Parkingmeter>) parkingmeterRepository.findAll();
+        return parkingmeterRepository.findAll();
     }
 }

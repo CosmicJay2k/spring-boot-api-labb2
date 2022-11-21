@@ -33,7 +33,7 @@ public class CarController {
 
     @GetMapping("/car")
     public List<Car> getAllCars() {
-        return (List<Car>) carRepository.findAll();
+        return carRepository.findAll();
     }
 
 }
