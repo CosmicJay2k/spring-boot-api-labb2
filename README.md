@@ -43,7 +43,10 @@ boolean boolean<br>
 
 GET: List all<br>
 
-GET with params (ex: ?closed=false): List all parkingmeters where "closed" is false</p>
+GET with params<br>
+(?closed={boolean}): List all parkingmeters where "closed" is {boolean}<br>
+(?closed={boolean}&person={id}): List all parkingmeters where "closed" is {boolean} and "person" is {id}<br>
+(?closed={boolean}&car={id}: List all parkingmeters where "closed" is {boolean} and "car" is {id}</p>
 
 ## /parkingmeter/{id}
 

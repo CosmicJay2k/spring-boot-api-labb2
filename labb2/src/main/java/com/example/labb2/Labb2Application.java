@@ -33,14 +33,21 @@ public class Labb2Application {
 		return (args) -> {
 			var p1 = new Person("Bob", "Namnson");
 			person.save(p1);
-			var c1 = new Car("BMW", "Caar", p1);
+			var p2 = new Person("Bob2", "Namnson");
+			person.save(p2);
+			var c1 = new Car("BMW", "Caar", p2);
 			car.save(c1);
+			var c2 = new Car("BMW Ultra", "Felino", p1);
+			car.save(c2);
 			Point<G2D> point = new Point<G2D>(point(WGS84, g(4.33, 3.21)));
 			var ps = new Parkingspot(point, 12.23);
 			parking.save(ps);
-			var pm = new Parkingmeter(p1, c1, ps, LocalDateTime.now(), false);
+			Point<G2D> point2 = new Point<G2D>(point(WGS84, g(4.33, 3.21)));
+			var ps2 = new Parkingspot(point2, 12.23);
+			parking.save(ps2);
+			var pm = new Parkingmeter(p1, c2, ps, LocalDateTime.now(), false);
 			meter.save(pm);
-			var pmClosed = new Parkingmeter(p1, c1, ps, LocalDateTime.now(), true);
+			var pmClosed = new Parkingmeter(p2, c1, ps2, LocalDateTime.now(), true);
 			meter.save(pmClosed);
 		};
 	}
