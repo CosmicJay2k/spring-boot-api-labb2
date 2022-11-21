@@ -40,6 +40,8 @@ public class Labb2Application {
 			parking.save(ps);
 			var pm = new Parkingmeter(p1, c1, ps, LocalDateTime.now(), false);
 			meter.save(pm);
+			var pmClosed = new Parkingmeter(p1, c1, ps, LocalDateTime.now(), true);
+			meter.save(pmClosed);
 		};
 	}
 }
