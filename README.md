@@ -44,3 +44,7 @@ boolean boolean<br>
 GET: List all<br>
 
 GET with params (ex: ?closed=false): List all parkingmeters where "closed" is false</p>
+
+## /parkingmeter/{id}
+
+GET: Get parkingmeter with id {id}
