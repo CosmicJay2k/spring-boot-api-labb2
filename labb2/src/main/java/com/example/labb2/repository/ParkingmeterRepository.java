@@ -26,4 +26,10 @@ public interface ParkingmeterRepository extends ListCrudRepository<Parkingmeter,
     @Modifying
     void updateEnd(@Param("id") int id, LocalDateTime time);
 
+    @Query("""
+            UPDATE Parkingmeter SET closed = true WHERE id = :id
+            """)
+    @Modifying
+    void closeParkingmeter(@Param("id") int id);
+
 }

@@ -51,3 +51,7 @@ GET with params<br>
 <p>GET: Get parkingmeter with id {id}<br>
 
 PATCH: Update end time of parkingmeter with {id}<p>
+
+## /parkingmeter/{id}/close
+
+PATCH: Close parkingmeter with {id}<p>

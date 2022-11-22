@@ -49,6 +49,13 @@ public class ParkingmeterController {
         return ResponseEntity.ok("Added one hour");
     }
 
+    @Transactional
+    @PatchMapping("/parkingmeter/{id}/close")
+    public ResponseEntity<?> closeParkingmeter(@PathVariable int id) {
+        parkingmeterRepository.closeParkingmeter(id);
+        return ResponseEntity.ok("Closed parkingmeter");
+    }
+
     @GetMapping("/parkingmeter/{id}")
     public Parkingmeter getParkingmeterById(@PathVariable int id) {
         return parkingmeterRepository.findById(id);
