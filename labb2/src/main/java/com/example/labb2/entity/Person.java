@@ -20,7 +20,6 @@ public class Person {
     @OneToMany(mappedBy = "owner")
     private List<Car> cars = new ArrayList<>();
 
-    // Constructors
     protected Person() {
     }
 
@@ -29,7 +28,6 @@ public class Person {
         this.lastName = lastName;
     }
 
-    // Getters and setters
     public Long getId() {
         return id;
     }
@@ -52,11 +50,6 @@ public class Person {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
-    }
-
-    public void addCar(Car car) {
-        car.setOwner(this);
-        this.cars.add(car);
     }
 
 }
