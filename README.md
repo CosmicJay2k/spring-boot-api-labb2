@@ -54,4 +54,8 @@ PATCH: Update end time of parkingmeter with {id}</p>
 
 ## /parkingmeter/{id}/close
 
-PATCH: Close parkingmeter with {id}
+PATCH: Close parkingmeter with {id}<br>
+<br>
+<br>
+
+_Inlämningsuppgift 2 -- SJPI21 -- John Tannenberg_
