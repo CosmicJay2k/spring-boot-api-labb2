@@ -25,6 +25,7 @@ public class Labb2Application {
 		SpringApplication.run(Labb2Application.class, args);
 	}
 
+	// DEV population of the database
 	@Bean
 	CommandLineRunner init(PersonRepository person, CarRepository car, ParkingspotRepository parking,
 			ParkingmeterRepository meter) {
