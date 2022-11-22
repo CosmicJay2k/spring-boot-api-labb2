@@ -1,6 +1,6 @@
 # Laboration Rest API in Spring Boot with MySQL database.
 
-## API mapping:
+## API endpoints:
 
 ## /person
 
@@ -37,9 +37,7 @@ GET: Get parkingspot with id {id}
 <p>POST:
 Person person,
 Car car,
-Parkingspot parkingspot,
-LocalDateTime LDT.Now(),
-boolean boolean<br>
+Parkingspot parkingspot<br>
 
 GET: List all<br>
 
