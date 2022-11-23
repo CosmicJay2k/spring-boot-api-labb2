@@ -78,7 +78,7 @@ public class ParkingmeterController {
     }
 
     @GetMapping(path = "/parkingmeter", params = { "closed", "car" })
-    public List<Parkingmeter> getParkingmetersByClosedAndCar(@RequestParam boolean closed, @RequestParam int car) {
-        return parkingmeterRepository.findByClosedAndCar_id(closed, car);
+    public List<Parkingmeter> getParkingmetersByClosedAndCar(@RequestParam boolean closed, @RequestParam String car) {
+        return parkingmeterRepository.findByClosedAndCar_lp(closed, car);
     }
 }

@@ -34,9 +34,9 @@ public class Labb2Application {
 			person.save(p1);
 			var p2 = new Person("Bob2", "Namnson");
 			person.save(p2);
-			var c1 = new Car("BMW", "Caar", p2);
+			var c1 = new Car("ATL213", "BMW", "Caar", p2);
 			car.save(c1);
-			var c2 = new Car("BMW Ultra", "Felino", p1);
+			var c2 = new Car("OST555", "BMW Ultra", "Felino", p1);
 			car.save(c2);
 			Point<G2D> point = new Point<G2D>(point(WGS84, g(4.33, 3.21)));
 			var ps = new Parkingspot(point, 12.23);

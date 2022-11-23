@@ -30,15 +30,15 @@ public class CarController {
         URI location = ServletUriComponentsBuilder
                 .fromCurrentRequest()
                 .path("/{id}")
-                .buildAndExpand(myCar.getId())
+                .buildAndExpand(myCar.getLp())
                 .toUri();
 
         return ResponseEntity.created(location).body(myCar);
     }
 
     @GetMapping("/car/{id}")
-    public Car getCarById(@PathVariable int id) {
-        return carRepository.findById(id);
+    public Car getCarById(@PathVariable String id) {
+        return carRepository.findByLp(id);
     }
 
     @GetMapping("/car")

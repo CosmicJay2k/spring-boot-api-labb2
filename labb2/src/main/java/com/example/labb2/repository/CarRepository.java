@@ -6,6 +6,6 @@ import com.example.labb2.entity.Car;
 
 public interface CarRepository extends ListCrudRepository<Car, Long> {
 
-    Car findById(long id);
+    Car findByLp(String lp);
 
 }
