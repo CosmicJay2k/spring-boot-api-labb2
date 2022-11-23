@@ -13,6 +13,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.example.labb2.entity.Person;
 import com.example.labb2.repository.PersonRepository;
+import com.example.labb2.view.PersonView;
 
 @RestController
 public class PersonController {
@@ -37,6 +38,11 @@ public class PersonController {
     }
 
     @GetMapping("/person/{id}")
+    public PersonView viewPersonById(@PathVariable int id) {
+        return personRepository.viewById(id);
+    }
+
+    @GetMapping("/person/{id}/full")
     public Person getPersonById(@PathVariable int id) {
         return personRepository.findById(id);
     }

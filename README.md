@@ -10,6 +10,10 @@ GET: List all</p>
 
 ## /person/{id}
 
+GET: Get view containing first and last name of person with id {id}
+
+## /person/{id}/full
+
 GET: Get person with id {id}
 
 ## /car
