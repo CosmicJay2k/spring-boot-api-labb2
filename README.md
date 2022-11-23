@@ -1,5 +1,7 @@
 # Laboration Rest API in Spring Boot with MySQL database.
 
+_Run MySql on port 3307, with a database named "test"._
+
 ## API endpoints:
 
 ## /person
