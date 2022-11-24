@@ -23,7 +23,7 @@ public class ParkingspotController {
         this.parkingspotRepository = parkingspotRepository;
     }
 
-    @PostMapping("/parkingspot")
+    @PostMapping("/api/parkingspot")
     public ResponseEntity<Parkingspot> addParkingspot(@RequestBody Parkingspot parkingspot) {
         var myParkingspot = parkingspotRepository.save(parkingspot);
 
@@ -36,12 +36,12 @@ public class ParkingspotController {
         return ResponseEntity.created(location).body(myParkingspot);
     }
 
-    @GetMapping("/parkingspot/{id}")
+    @GetMapping("/api/parkingspot/{id}")
     public Parkingspot getParkingspotById(@PathVariable int id) {
         return parkingspotRepository.findById(id);
     }
 
-    @GetMapping("/parkingspot")
+    @GetMapping("/api/parkingspot")
     public List<Parkingspot> getAllParkingspots() {
         return parkingspotRepository.findAll();
     }

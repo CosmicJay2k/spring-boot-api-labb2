@@ -28,7 +28,7 @@ public class ParkingmeterController {
         this.parkingmeterRepository = parkingmeterRepository;
     }
 
-    @PostMapping("/parkingmeter")
+    @PostMapping("/api/parkingmeter")
     public ResponseEntity<Parkingmeter> addParkingmeter(@RequestBody Parkingmeter parkingmeter) {
         var myParkingmeter = parkingmeterRepository.save(parkingmeter);
 
@@ -42,7 +42,7 @@ public class ParkingmeterController {
     }
 
     @Transactional
-    @PatchMapping("/parkingmeter/{id}")
+    @PatchMapping("/api/parkingmeter/{id}")
     public ResponseEntity<?> updateParkingmeterEnd(@PathVariable int id) {
         LocalDateTime endTimeBefore = parkingmeterRepository.findById(id).getEnd();
         parkingmeterRepository.updateEnd(id, endTimeBefore.plusHours(1));
@@ -50,34 +50,34 @@ public class ParkingmeterController {
     }
 
     @Transactional
-    @PatchMapping("/parkingmeter/{id}/close")
+    @PatchMapping("/api/parkingmeter/{id}/close")
     public ResponseEntity<?> closeParkingmeter(@PathVariable int id) {
         parkingmeterRepository.closeParkingmeter(id);
         return ResponseEntity.ok("Closed parkingmeter");
     }
 
-    @GetMapping("/parkingmeter/{id}")
+    @GetMapping("/api/parkingmeter/{id}")
     public Parkingmeter getParkingmeterById(@PathVariable int id) {
         return parkingmeterRepository.findById(id);
     }
 
-    @GetMapping("/parkingmeter")
+    @GetMapping("/api/parkingmeter")
     public List<Parkingmeter> getAllParkingmeters() {
         return parkingmeterRepository.findAll();
     }
 
-    @GetMapping(path = "/parkingmeter", params = "closed")
+    @GetMapping(path = "/api/parkingmeter", params = "closed")
     public List<Parkingmeter> getParkingmetersByOpenOrClosed(@RequestParam boolean closed) {
         return parkingmeterRepository.findByClosed(closed);
     }
 
-    @GetMapping(path = "/parkingmeter", params = { "closed", "person" })
+    @GetMapping(path = "/api/parkingmeter", params = { "closed", "person" })
     public List<Parkingmeter> getParkingmetersByClosedAndPerson(@RequestParam boolean closed,
             @RequestParam int person) {
         return parkingmeterRepository.findByClosedAndPerson_id(closed, person);
     }
 
-    @GetMapping(path = "/parkingmeter", params = { "closed", "car" })
+    @GetMapping(path = "/api/parkingmeter", params = { "closed", "car" })
     public List<Parkingmeter> getParkingmetersByClosedAndCar(@RequestParam boolean closed, @RequestParam String car) {
         return parkingmeterRepository.findByClosedAndCar_lp(closed, car);
     }

@@ -24,7 +24,7 @@ public class PersonController {
         this.personRepository = personRepository;
     }
 
-    @PostMapping("/person")
+    @PostMapping("/api/person")
     public ResponseEntity<Person> addPerson(@RequestBody Person person) {
         var myPerson = personRepository.save(person);
 
@@ -37,17 +37,17 @@ public class PersonController {
         return ResponseEntity.created(location).body(myPerson);
     }
 
-    @GetMapping("/person/{id}")
+    @GetMapping("/api/person/{id}")
     public PersonView viewPersonById(@PathVariable int id) {
         return personRepository.viewById(id);
     }
 
-    @GetMapping("/person/{id}/full")
+    @GetMapping("/api/person/{id}/full")
     public Person getPersonById(@PathVariable int id) {
         return personRepository.findById(id);
     }
 
-    @GetMapping("/person")
+    @GetMapping("/api/person")
     public List<Person> getAllPersons() {
         return personRepository.findAll();
     }

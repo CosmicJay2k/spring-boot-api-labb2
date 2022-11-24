@@ -23,7 +23,7 @@ public class CarController {
         this.carRepository = carRepository;
     }
 
-    @PostMapping("/car")
+    @PostMapping("/api/car")
     public ResponseEntity<Car> addCar(@RequestBody Car car) {
         var myCar = carRepository.save(car);
 
@@ -36,12 +36,12 @@ public class CarController {
         return ResponseEntity.created(location).body(myCar);
     }
 
-    @GetMapping("/car/{id}")
+    @GetMapping("/api/car/{id}")
     public Car getCarById(@PathVariable String id) {
         return carRepository.findByLp(id);
     }
 
-    @GetMapping("/car")
+    @GetMapping("/api/car")
     public List<Car> getAllCars() {
         return carRepository.findAll();
     }

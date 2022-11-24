@@ -4,41 +4,41 @@ _Run MySql on port 3307, with a database named "test"._
 
 ## API endpoints:
 
-## /person
+## /api/person
 
 <p>POST: String firstName, String lastName<br>
   
 GET: List all</p>
 
-## /person/{id}
+## /api/person/{id}
 
 GET: Get view containing first and last name of person with id {id}
 
-## /person/{id}/full
+## /api/person/{id}/full
 
 GET: Get person with id {id}
 
-## /car
+## /api/car
 
 <p>POST: String make, String model, Person owner<br>
   
 GET: List all</p>
 
-## /car/{id}
+## /api/car/{id}
 
 GET: Get car with id {id}
 
-## /parkingspot
+## /api/parkingspot
 
 <p>POST: Point<G2D> point, Double price<br>
   
 GET: List all</p>
 
-## /parkingspot/{id}
+## /api/parkingspot/{id}
 
 GET: Get parkingspot with id {id}
 
-## /parkingmeter
+## /api/parkingmeter
 
 <p>POST:
 Person person,
@@ -52,13 +52,13 @@ GET with params<br>
 (?closed={boolean}&person={id}): List all parkingmeters where "closed" is {boolean} and "person" is {id}<br>
 (?closed={boolean}&car={id}: List all parkingmeters where "closed" is {boolean} and "car" is {id}</p>
 
-## /parkingmeter/{id}
+## /api/parkingmeter/{id}
 
 <p>GET: Get parkingmeter with id {id}<br>
 
 PATCH: Update end time of parkingmeter with {id}</p>
 
-## /parkingmeter/{id}/close
+## /api/parkingmeter/{id}/close
 
 PATCH: Close parkingmeter with {id}<br>
 <br>
