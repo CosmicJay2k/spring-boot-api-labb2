@@ -36,7 +36,7 @@ GET: Get car with id {id}
 
 ## /api/parkingspot
 
-<p>POST: Point<G2D> point, Double price as JSON body<br>
+<p>POST: Point&#60G2D&#62 point, Double price as JSON body<br>
 
 POST with params<br>
 (?c1={double}&c2={double}): c1 and c2 are coordinates<br>
