@@ -41,7 +41,7 @@ public class Labb2Application {
 			Point<G2D> point = new Point<G2D>(point(WGS84, g(4.33, 3.21)));
 			var ps = new Parkingspot(point, 12.23);
 			parking.save(ps);
-			Point<G2D> point2 = new Point<G2D>(point(WGS84, g(4.33, 3.21)));
+			Point<G2D> point2 = new Point<G2D>(point(WGS84, g(4.34, 3.22)));
 			var ps2 = new Parkingspot(point2, 12.23);
 			parking.save(ps2);
 			var pm = new Parkingmeter(p1, c2, ps);
