@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Getting Started: Serving Web Content</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  </head>
+  <body>
+    <div>      
+        <h1>Laboration Rest API in Spring Boot with MySQL database.</h1>
+        <i>Run MySql on port 3307, with a database named "test".</i><br>       
+        <h2>API endpoints:</h2>
+
+        <h3>/api/person</h3>     
+        <p>POST: String firstName, String lastName as JSON body</p>        
+        <p>POST with params:<br> 
+        (?first={string}&last={string})</p>       
+        <p>GET: List all</p>
+
+        <h3>/api/person/{id}</h3>
+        <p>GET: Get view containing first and last name of person with id {id}</p>
+        
+        <h3>/api/person/{id}/full</h3>
+        <p>GET: Get person with id {id}</p>
+        
+        <h3>/api/car</h3>
+        <p>POST: String lp, String make, String model, Person owner as JSON body</p>
+        <p>POST with params:<br>
+        (?lp={string}&make={string}&model={string}&owner={id})</p>
+        <p>GET: List all</p>
+        
+        <h3>/api/car/{id}</h3>
+        <p>GET: Get car with id {id}</p>
+        
+        <h3>/api/parkingspot</h3>
+        <p>POST: Point<G2D> point, Double price as JSON body</p>
+        
+        <p>POST with params:<br>
+        (?c1={double}&c2={double}): c1 and c2 are coordinates</p>
+        <p>GET: List all</p>
+        
+        <h3>/api/parkingspot/{id}</h3>
+        <p>GET: Get parkingspot with id {id}</p>
+        
+        <h3>/api/parkingmeter</h3>
+        <p>POST:
+        Person person,
+        Car car,
+        Parkingspot parkingspot as JSON body</p>
+        <p>POST with params:<br>
+        (?car={licensePlate}&parkingspot={id})</p>
+        <p>GET: List all</p>
+        <p>GET with params:<br>
+        (?closed={boolean}): List all parkingmeters where "closed" is {boolean}<br>
+        (?closed={boolean}&person={id}): List all parkingmeters where "closed" is {boolean} and "person" is {id}<br>
+        (?closed={boolean}&car={id}: List all parkingmeters where "closed" is {boolean} and "car" is {id}</p>
+        
+        <h3>/api/parkingmeter/{id}</h3>
+        <p>GET: Get parkingmeter with id {id}</p>
+        <p>PATCH: Update end time of parkingmeter with {id}</p>
+        
+        <h3>/api/parkingmeter/{id}/close</h3>
+        <p>PATCH: Close parkingmeter with {id}</p>
+        <br>
+        <br>
+        
+        _Inlämningsuppgift 2 -- SJPI21 -- John Tannenberg_
+        
+        </div>
+  </body>
+</html>
