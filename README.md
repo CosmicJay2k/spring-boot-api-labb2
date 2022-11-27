@@ -20,7 +20,7 @@ GET: Get person with id {id}
 
 ## /api/car
 
-<p>POST: String make, String model, Person owner<br>
+<p>POST: String lp, String make, String model, Person owner<br>
   
 GET: List all</p>
 
