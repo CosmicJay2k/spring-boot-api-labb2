@@ -21,7 +21,10 @@ GET: Get person with id {id}
 ## /api/car
 
 <p>POST: String lp, String make, String model, Person owner as JSON body<br>
-  
+
+POST with params<br>
+(?lp={string}&make={string}&model={string}&owner={id})<br>
+
 GET: List all</p>
 
 ## /api/car/{id}
