@@ -7,7 +7,10 @@ _Run MySql on port 3307, with a database named "test"._
 ## /api/person
 
 <p>POST: String firstName, String lastName as JSON body<br>
-  
+
+POST with params<br>
+(?first={string}&last={string})<br>
+
 GET: List all</p>
 
 ## /api/person/{id}
