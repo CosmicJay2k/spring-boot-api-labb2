@@ -41,7 +41,7 @@ public class CarController {
     }
 
     @PostMapping(path = "/api/car", params = { "lp", "make", "model", "owner" })
-    public ResponseEntity<Car> addCar(@RequestParam String lp, String make, String model, int owner) {
+    public ResponseEntity<Car> addCarParams(@RequestParam String lp, String make, String model, int owner) {
 
         var myCar = new Car(lp, make, model, personRepository.findById(owner));
         carRepository.save(myCar);
