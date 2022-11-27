@@ -12,6 +12,7 @@ public class ParkingmeterControllerAdvice {
     @ExceptionHandler(CustomException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     public String handleException(CustomException exception) {
-        return String.format("One or more resources could not be found on server", exception.getMessage());
+        return String.format("One or more resources could not be found on server: " + exception.getMessage(),
+                exception.getMessage());
     }
 }

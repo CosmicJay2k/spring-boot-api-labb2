@@ -75,10 +75,10 @@ public class ParkingmeterController {
 
                 return ResponseEntity.created(location).body(myParkingmeter);
             } catch (Exception e) {
-                throw new CustomException();
+                throw new CustomException("Missing car");
             }
         else {
-            throw new CustomException();
+            throw new CustomException("Missing parkingspot");
         }
     }
 
