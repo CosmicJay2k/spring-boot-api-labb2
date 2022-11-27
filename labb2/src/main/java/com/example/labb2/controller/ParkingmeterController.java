@@ -60,20 +60,24 @@ public class ParkingmeterController {
     @PostMapping(path = "/api/parkingmeter", params = { "car", "parkingspot" })
     public ResponseEntity<Parkingmeter> addParkingmeterParams(@RequestParam String car, int parkingspot) {
         var myParkingmeter = new Parkingmeter();
-        try {
-            myParkingmeter = new Parkingmeter(carRepository.findOwnerIdByLp(car).getOwner(),
-                    carRepository.findByLp(car),
-                    parkingspotRepository.findById(parkingspot));
-            parkingmeterRepository.save(myParkingmeter);
+        if (parkingspotRepository.findById(parkingspot) != null)
+            try {
+                myParkingmeter = new Parkingmeter(carRepository.findOwnerIdByLp(car).getOwner(),
+                        carRepository.findByLp(car),
+                        parkingspotRepository.findById(parkingspot));
+                parkingmeterRepository.save(myParkingmeter);
 
-            URI location = ServletUriComponentsBuilder
-                    .fromCurrentRequest()
-                    .path("/{id}")
-                    .buildAndExpand(myParkingmeter.getId())
-                    .toUri();
+                URI location = ServletUriComponentsBuilder
+                        .fromCurrentRequest()
+                        .path("/{id}")
+                        .buildAndExpand(myParkingmeter.getId())
+                        .toUri();
 
-            return ResponseEntity.created(location).body(myParkingmeter);
-        } catch (Exception e) {
+                return ResponseEntity.created(location).body(myParkingmeter);
+            } catch (Exception e) {
+                throw new CustomException();
+            }
+        else {
             throw new CustomException();
         }
     }
