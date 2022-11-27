@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.example.labb2.entity.Parkingmeter;
+import com.example.labb2.exception.CustomException;
 import com.example.labb2.repository.CarRepository;
 import com.example.labb2.repository.ParkingmeterRepository;
 import com.example.labb2.repository.ParkingspotRepository;
@@ -58,18 +59,23 @@ public class ParkingmeterController {
 
     @PostMapping(path = "/api/parkingmeter", params = { "car", "parkingspot" })
     public ResponseEntity<Parkingmeter> addParkingmeterParams(@RequestParam String car, int parkingspot) {
-        var myParkingmeter = new Parkingmeter(carRepository.findOwnerIdByLp(car).getOwner(),
-                carRepository.findByLp(car),
-                parkingspotRepository.findById(parkingspot));
-        parkingmeterRepository.save(myParkingmeter);
+        var myParkingmeter = new Parkingmeter();
+        try {
+            myParkingmeter = new Parkingmeter(carRepository.findOwnerIdByLp(car).getOwner(),
+                    carRepository.findByLp(car),
+                    parkingspotRepository.findById(parkingspot));
+            parkingmeterRepository.save(myParkingmeter);
 
-        URI location = ServletUriComponentsBuilder
-                .fromCurrentRequest()
-                .path("/{id}")
-                .buildAndExpand(myParkingmeter.getId())
-                .toUri();
+            URI location = ServletUriComponentsBuilder
+                    .fromCurrentRequest()
+                    .path("/{id}")
+                    .buildAndExpand(myParkingmeter.getId())
+                    .toUri();
 
-        return ResponseEntity.created(location).body(myParkingmeter);
+            return ResponseEntity.created(location).body(myParkingmeter);
+        } catch (Exception e) {
+            throw new CustomException();
+        }
     }
 
     @Transactional
