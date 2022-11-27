@@ -31,7 +31,10 @@ GET: Get car with id {id}
 ## /api/parkingspot
 
 <p>POST: Point<G2D> point, Double price<br>
-  
+
+POST with params<br>
+(?c1={double}&c2={double}): c1 and c2 are coordinates<br>
+
 GET: List all</p>
 
 ## /api/parkingspot/{id}
@@ -44,6 +47,9 @@ GET: Get parkingspot with id {id}
 Person person,
 Car car,
 Parkingspot parkingspot<br>
+
+POST with params<br>
+(?car={licensePlate}&parkingspot={id})<br>
 
 GET: List all<br>
 

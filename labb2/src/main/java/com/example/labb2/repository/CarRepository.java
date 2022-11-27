@@ -8,4 +8,6 @@ public interface CarRepository extends ListCrudRepository<Car, Long> {
 
     Car findByLp(String lp);
 
+    Car findOwnerIdByLp(String lp);
+
 }

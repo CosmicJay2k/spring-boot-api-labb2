@@ -15,7 +15,10 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.example.labb2.entity.Parkingmeter;
+import com.example.labb2.repository.CarRepository;
 import com.example.labb2.repository.ParkingmeterRepository;
+import com.example.labb2.repository.ParkingspotRepository;
+import com.example.labb2.repository.PersonRepository;
 
 import jakarta.transaction.Transactional;
 
@@ -23,14 +26,42 @@ import jakarta.transaction.Transactional;
 public class ParkingmeterController {
 
     ParkingmeterRepository parkingmeterRepository;
+    PersonRepository personRepository;
+    CarRepository carRepository;
+    ParkingspotRepository parkingspotRepository;
 
-    public ParkingmeterController(ParkingmeterRepository parkingmeterRepository) {
+    public ParkingmeterController(ParkingmeterRepository parkingmeterRepository, PersonRepository personRepository,
+            CarRepository carRepository, ParkingspotRepository parkingspotRepository) {
         this.parkingmeterRepository = parkingmeterRepository;
+        this.personRepository = personRepository;
+        this.carRepository = carRepository;
+        this.parkingspotRepository = parkingspotRepository;
     }
+
+    // public ParkingmeterController(ParkingmeterRepository parkingmeterRepository)
+    // {
+    // this.parkingmeterRepository = parkingmeterRepository;
+    // }
 
     @PostMapping("/api/parkingmeter")
     public ResponseEntity<Parkingmeter> addParkingmeter(@RequestBody Parkingmeter parkingmeter) {
         var myParkingmeter = parkingmeterRepository.save(parkingmeter);
+
+        URI location = ServletUriComponentsBuilder
+                .fromCurrentRequest()
+                .path("/{id}")
+                .buildAndExpand(myParkingmeter.getId())
+                .toUri();
+
+        return ResponseEntity.created(location).body(myParkingmeter);
+    }
+
+    @PostMapping(path = "/api/parkingmeter", params = { "car", "parkingspot" })
+    public ResponseEntity<Parkingmeter> addParkingmeterParams(@RequestParam String car, int parkingspot) {
+        var myParkingmeter = new Parkingmeter(carRepository.findOwnerIdByLp(car).getOwner(),
+                carRepository.findByLp(car),
+                parkingspotRepository.findById(parkingspot));
+        parkingmeterRepository.save(myParkingmeter);
 
         URI location = ServletUriComponentsBuilder
                 .fromCurrentRequest()
