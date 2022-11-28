@@ -39,11 +39,6 @@ public class ParkingmeterController {
         this.parkingspotRepository = parkingspotRepository;
     }
 
-    // public ParkingmeterController(ParkingmeterRepository parkingmeterRepository)
-    // {
-    // this.parkingmeterRepository = parkingmeterRepository;
-    // }
-
     @PostMapping("/api/parkingmeter")
     public ResponseEntity<Parkingmeter> addParkingmeter(@RequestBody Parkingmeter parkingmeter) {
         var myParkingmeter = parkingmeterRepository.save(parkingmeter);

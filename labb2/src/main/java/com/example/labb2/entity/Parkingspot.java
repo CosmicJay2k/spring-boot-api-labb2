@@ -15,8 +15,7 @@ public class Parkingspot {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private Point<G2D> point;
-    private double price; // Price would need a relation to the times in Parkingmeter entity,
-                          // alternatively be placed in that entity
+    private double price;
 
     public Parkingspot() {
     }
