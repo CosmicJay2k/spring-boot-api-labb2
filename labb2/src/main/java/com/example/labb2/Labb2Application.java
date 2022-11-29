@@ -38,11 +38,9 @@ public class Labb2Application {
 			car.save(c1);
 			var c2 = new Car("OST555", "BMW Ultra", "Felino", p1);
 			car.save(c2);
-			Point<G2D> point = new Point<G2D>(point(WGS84, g(4.33, 3.21)));
-			var ps = new Parkingspot(point, 12.23);
+			var ps = new Parkingspot(new Point<G2D>(point(WGS84, g(4.33, 3.21))), 12.23);
 			parking.save(ps);
-			Point<G2D> point2 = new Point<G2D>(point(WGS84, g(4.34, 3.22)));
-			var ps2 = new Parkingspot(point2, 12.23);
+			var ps2 = new Parkingspot(new Point<G2D>(point(WGS84, g(4.34, 3.22))), 12.23);
 			parking.save(ps2);
 			var pm = new Parkingmeter(p1, c2, ps);
 			meter.save(pm);
