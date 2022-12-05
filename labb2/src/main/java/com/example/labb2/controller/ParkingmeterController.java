@@ -53,13 +53,13 @@ public class ParkingmeterController {
     }
 
     @PostMapping(path = "/api/parkingmeter", params = { "car", "parkingspot" })
-    public ResponseEntity<Parkingmeter> addParkingmeterParams(@RequestParam String car, int parkingspot) {
+    public ResponseEntity<Parkingmeter> addParkingmeterParams(@RequestParam String car, Long parkingspot) {
         var myParkingmeter = new Parkingmeter();
         if (parkingspotRepository.findById(parkingspot) != null)
             try {
                 myParkingmeter = new Parkingmeter(carRepository.findOwnerIdByLp(car).getOwner(),
                         carRepository.findByLp(car),
-                        parkingspotRepository.findById(parkingspot));
+                        parkingspotRepository.findById(parkingspot).get());
                 parkingmeterRepository.save(myParkingmeter);
 
                 URI location = ServletUriComponentsBuilder
@@ -79,22 +79,22 @@ public class ParkingmeterController {
 
     @Transactional
     @PatchMapping("/api/parkingmeter/{id}")
-    public ResponseEntity<?> updateParkingmeterEnd(@PathVariable int id) {
-        LocalDateTime endTimeBefore = parkingmeterRepository.findById(id).getEnd();
+    public ResponseEntity<?> updateParkingmeterEnd(@PathVariable Long id) {
+        LocalDateTime endTimeBefore = parkingmeterRepository.findById(id).get().getEnd();
         parkingmeterRepository.updateEnd(id, endTimeBefore.plusHours(1));
         return ResponseEntity.ok("Added one hour");
     }
 
     @Transactional
     @PatchMapping("/api/parkingmeter/{id}/close")
-    public ResponseEntity<?> closeParkingmeter(@PathVariable int id) {
+    public ResponseEntity<?> closeParkingmeter(@PathVariable Long id) {
         parkingmeterRepository.closeParkingmeter(id);
         return ResponseEntity.ok("Closed parkingmeter");
     }
 
     @GetMapping("/api/parkingmeter/{id}")
-    public Parkingmeter getParkingmeterById(@PathVariable int id) {
-        return parkingmeterRepository.findById(id);
+    public Parkingmeter getParkingmeterById(@PathVariable Long id) {
+        return parkingmeterRepository.findById(id).get();
     }
 
     @GetMapping("/api/parkingmeter")

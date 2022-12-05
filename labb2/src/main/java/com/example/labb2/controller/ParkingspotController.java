@@ -57,8 +57,8 @@ public class ParkingspotController {
     }
 
     @GetMapping("/api/parkingspot/{id}")
-    public Parkingspot getParkingspotById(@PathVariable int id) {
-        return parkingspotRepository.findById(id);
+    public Parkingspot getParkingspotById(@PathVariable Long id) {
+        return parkingspotRepository.findById(id).get();
     }
 
     @GetMapping("/api/parkingspot")

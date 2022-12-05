@@ -54,13 +54,13 @@ public class PersonController {
     }
 
     @GetMapping("/api/person/{id}")
-    public PersonView viewPersonById(@PathVariable int id) {
+    public PersonView viewPersonById(@PathVariable Long id) {
         return personRepository.viewById(id);
     }
 
     @GetMapping("/api/person/{id}/full")
-    public Person getPersonById(@PathVariable int id) {
-        return personRepository.findById(id);
+    public Person getPersonById(@PathVariable Long id) {
+        return personRepository.findById(id).get();
     }
 
     @GetMapping("/api/person")

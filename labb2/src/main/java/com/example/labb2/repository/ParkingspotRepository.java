@@ -6,6 +6,4 @@ import com.example.labb2.entity.Parkingspot;
 
 public interface ParkingspotRepository extends ListCrudRepository<Parkingspot, Long> {
 
-    Parkingspot findById(long id);
-
 }
