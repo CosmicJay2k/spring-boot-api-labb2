@@ -3,6 +3,7 @@ package com.example.labb2.controller;
 import java.net.URI;
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -55,25 +56,23 @@ public class ParkingmeterController {
     @PostMapping(path = "/api/parkingmeter", params = { "car", "parkingspot" })
     public ResponseEntity<Parkingmeter> addParkingmeterParams(@RequestParam String car, Long parkingspot) {
         var myParkingmeter = new Parkingmeter();
-        if (parkingspotRepository.findById(parkingspot) != null)
-            try {
-                myParkingmeter = new Parkingmeter(carRepository.findOwnerIdByLp(car).getOwner(),
-                        carRepository.findByLp(car),
-                        parkingspotRepository.findById(parkingspot).get());
-                parkingmeterRepository.save(myParkingmeter);
+        try {
+            myParkingmeter = new Parkingmeter(carRepository.findOwnerIdByLp(car).getOwner(),
+                    carRepository.findByLp(car),
+                    parkingspotRepository.findById(parkingspot).get());
+            parkingmeterRepository.save(myParkingmeter);
 
-                URI location = ServletUriComponentsBuilder
-                        .fromCurrentRequest()
-                        .path("/{id}")
-                        .buildAndExpand(myParkingmeter.getId())
-                        .toUri();
+            URI location = ServletUriComponentsBuilder
+                    .fromCurrentRequest()
+                    .path("/{id}")
+                    .buildAndExpand(myParkingmeter.getId())
+                    .toUri();
 
-                return ResponseEntity.created(location).body(myParkingmeter);
-            } catch (Exception e) {
-                throw new CustomException("Missing car");
-            }
-        else {
+            return ResponseEntity.created(location).body(myParkingmeter);
+        } catch (NoSuchElementException e) {
             throw new CustomException("Missing parkingspot");
+        } catch (Exception e) {
+            throw new CustomException("Missing car");
         }
     }
 
